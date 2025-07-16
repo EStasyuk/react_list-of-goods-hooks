@@ -8,7 +8,7 @@ type SortField = 'name' | 'length' | '';
 const SORT_FIELD_NAME = 'name';
 const SORT_FIELD_LENGTH = 'length';
 
-function getSortedGoods(goods: string[], sortField: SortField): string {
+function getSortedGoods(goods: string[], sortField: SortField): string[] {
   const sortedGoods = [...goods];
 
   if (sortField) {
@@ -45,11 +45,11 @@ export const App = () => {
   const [sortField, setSortField] = useState<SortField>('');
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
-  const sortedGoods = useMemo<string>(() => {
+  const sortedGoods = useMemo<string[]>(() => {
     return getSortedGoods(goodsFromServer, sortField);
   }, [sortField]);
 
-  const visibleGoods = useMemo<string>(() => {
+  const visibleGoods = useMemo<string[]>(() => {
     const list = [...sortedGoods];
 
     return isReversed ? list.reverse() : list;
