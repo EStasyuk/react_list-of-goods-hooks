@@ -15,7 +15,7 @@ function getSortedGoods(goods: string[], sortField: SortField): string[] {
     sortedGoods.sort((good1: string, good2: string) => {
       switch (sortField) {
         case SORT_FIELD_NAME:
-          return good1.localeCompare(good2);
+          return good1.toLowerCase().localeCompare(good2.toLowerCase());
         case SORT_FIELD_LENGTH:
           return good1.length - good2.length;
 
